@@ -7,7 +7,7 @@ Rails.application.routes.draw do
 
   #get 'static_pages/about'
   root 'static_pages#home'
-  match '/new', to: 'user#new', via: 'get'
+  match '/new', to: 'users#new', via: 'get'
   match '/about', to: 'static_pages#about', via: 'get'
   #match '/home', to: 'static_pages#home', via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
