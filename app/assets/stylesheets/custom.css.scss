@@ -49,12 +49,16 @@ h1{
   text-align: center;
 }
 h2{
-  font-size: 1.3em;
+  font-size: 1.7em;
   letter-spacing: -1px;
   margin-bottom: 30px;
   font-weight: normal;
   text-align: center;
   color: #999;
+}
+h3{
+  font-size: 1.3em;
+  text-align: center;
 }
 p{
   font-size: 1.1em;
@@ -101,3 +105,63 @@ p{
     color: #fff;
   }
 /* end */
+
+/* Debug */
+$grayMediumLight: #eaeaea;
+@mixin box_sizing {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.debug_dump{
+  clear: both;
+  float: left;
+  width: 100%;
+  margin-top: 10px;
+  @include box_sizing;
+}
+
+/* End */
+
+/* for profile picture */
+aside section{
+  padding: 10px 0;
+  border-top: 1px solid $grayMediumLight;
+}
+aside section h1{
+  font-size: 1.4em;
+  text-align: left;
+  letter-spacing: -1px;
+  margin-bottom: 3px;
+  margin-top: 0px;
+}
+aside span{
+  display: block;
+  margin-bottom: 3px;
+  line-height: 1;
+}
+.gravatar {
+  float: left;
+  margin-right: 10px;
+}
+/* end */
+/* for form elements*/
+.input, .textarea, .select{
+  border: 1px solid #bbb;
+  @include box_sizing;
+}
+.input{
+  height: auto !important;
+}
+/* end */
+
+/* Error meaasges*/
+.error_explaination{
+  color: #f00;
+}
+.error_explaination ul{
+  list-style: none;
+  margin: 0 0 10px 0;
+}
+
+/*End error messages*/
