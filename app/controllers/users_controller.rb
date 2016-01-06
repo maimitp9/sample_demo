@@ -18,7 +18,7 @@ class UsersController < ApplicationController
       flash[:success] = "Welcome #{@user.name}"
       redirect_to @user
     else
-      flash[:error] = "Sorry there was problem, try again.."
+      flash.now[:error] = 'Sorry there was problem with sign up, try again...'
       render 'new'
     end
   end
