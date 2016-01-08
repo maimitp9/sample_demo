@@ -144,7 +144,9 @@ aside span{
 }
 .gravatar {
   float: left;
-  margin-right: 10px;
+  margin-right:10px ;
+  width: 60px;
+  height: 60px;
 }
 /* end */
 /* for form elements*/
@@ -174,3 +176,28 @@ ul {
 }
 
 /* end */
+
+/* Microposts */
+.microposts-heading h3{
+  text-align: left;
+  padding-left: 40px;
+}
+.microposts{
+  list-style: none;
+  margin:10px 0 0 0;
+}
+.microposts li{
+  padding: 10px 0;
+  border-top: 1px solid #cecece;
+}
+.content{
+  display: block;
+  font-size: 16px;
+}
+.timestamp{
+  color: #cecece;
+}
+.post-btn{
+  margin-top: 10px;
+}
+/* End Microposts */

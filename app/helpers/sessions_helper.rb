@@ -31,6 +31,14 @@ module SessionsHelper
     user == current_user
   end
 
+  # Check user is signed in or not
+  def signed_in_user
+    unless signed_in?
+      store_location #user are not logged in than it store url location into session key return_to
+      redirect_to signin_path, notice: 'Please Signin'
+    end
+  end
+
   #sign out user
   def sign_out
     current_user.update_attribute(:remember_token, User.digest(User.new_remember_token))

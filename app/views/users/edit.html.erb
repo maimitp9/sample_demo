@@ -6,7 +6,7 @@
 
     <%= form_for(@user, :html => {:class => "form-horizontal"}) do |f|  %>
 
-    <%= render 'shared/error_messages' %>
+    <%= render 'shared/error_messages', object: f.object %>
 
       <div class="form-group">
         <%= f.label :firstName, "First name", :class => "col-sm-3 control-label" %>
