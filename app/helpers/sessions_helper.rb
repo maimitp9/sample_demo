@@ -47,8 +47,8 @@ module SessionsHelper
   end
 
   #Friendly forwording
-  def redirect_back_or(default)
-    redirect_to(session[:return_to] || default)
+  def redirect_back_or(user)
+    redirect_to(session[:return_to] || user)
     session.delete(:return_to)
   end
 

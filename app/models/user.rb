@@ -1,5 +1,16 @@
 class User < ActiveRecord::Base
   has_many :microposts, dependent: :destroy
+
+  has_many :followers, through: :reverse_relationships, source: :follower
+
+  has_many :relationships, foreign_key: 'follower_id', dependent: :destroy
+  # in this case using the :source parameter, which explicitly tells Rails that the
+  # source of the followed_users array is the set of followed ids.
+  has_many :followed_users, through: :relationships, source: :followed
+  has_many :reverse_relationships, foreign_key: 'followed_id',
+                                   class_name: 'Relationship',
+                                   dependent: :destroy
+
   before_save { self.email = email.downcase }
   before_create :create_remember_token
 
@@ -15,7 +26,7 @@ class User < ActiveRecord::Base
 
   #select all microfeed which are associate with this user id
   def feed
-    Micropost.where('user_id = ?',id)
+    Micropost.from_users_followed_by(self)
   end
 
   # Generate new remember token when user signup
@@ -26,6 +37,21 @@ class User < ActiveRecord::Base
   # Encrypt new remember token using SHA1
   def User.digest(token)
     Digest::SHA1::hexdigest(token.to_s)
+  end
+
+  # to check other user is already follow or other user id already exist into relationships table
+  def following?(other_user)
+      relationships.find_by(followed_id: other_user.id)
+  end
+
+  # create entry into relationships table for follow
+  def follow!(other_user)
+      relationships.create!(followed_id: other_user.id)
+  end
+
+  # delete other user id from relationships table (unfollow)
+  def unfollow!(other_user)
+    relationships.find_by(followed_id: other_user.id).destroy
   end
 
   private

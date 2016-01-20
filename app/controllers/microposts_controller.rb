@@ -7,7 +7,7 @@ class MicropostsController < ApplicationController
   def create
     @micropost = current_user.microposts.build(microposts_params)
     if @micropost.save
-      flash[:success] = "Post crated..."
+      flash[:success] = "Post created..."
       redirect_to root_url
     else
       @feed_items = []

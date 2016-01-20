@@ -1,13 +1,14 @@
 <% provide(:title, 'Home') %>
 <% if signed_in? %>
-
-
 <div class="row">
   <aside class="col-md-4">
     <section>
       <h1>
         <%= render 'shared/user_info' %>
       </h1>
+    </section>
+    <section>
+      <%= render 'shared/stats' %>
     </section>
     <sectio>
       <%= render 'shared/micropost_form' %>
@@ -18,7 +19,6 @@
       <h3>Micropost Feed</h3>
       <%= render 'shared/feed' %>
     </div>
-
 <% else %>
   <div class="center hero-unit">
     <h1>Welcome to home page</h1>
